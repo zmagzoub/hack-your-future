@@ -19,7 +19,8 @@ var users = [{
 
 function findUserById(userId) {
     for (var i = 0; i < users.length; i++) {
-        const userFound = users[i].userId == userId
+        userId = parseInt(userId);
+        const userFound = users[i].userId == userId;
         if (userFound) {
             return users[i];
         }
@@ -33,7 +34,7 @@ function updateBalance(req, res) {
         return;
     }
     const userId = req.query["userId"];
-    const amount = req.query["amount"];
+    const amount = parseInt(req.query["amount"]);
     if (userId == null || amount == null) {
         res.send("Invalid request!")
     } else {
